@@ -1,0 +1,1 @@
+streamlit run warehouse_app.py
