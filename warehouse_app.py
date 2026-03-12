@@ -17,6 +17,8 @@ logging.basicConfig(
 logger = logging.getLogger("warehouse_app")
 logger.info("Starting warehouse_app, log file: %s", LOG_PATH)
 
+# --- Constants ---
+FIFO_START_DATE = date(2026, 1, 1)
 
 # --- session state (чтобы ввод номера/даты не сбрасывался при rerun) ---
 if "mp_month_sale_date" not in st.session_state:
@@ -2705,9 +2707,6 @@ def get_product_timeline(product_id: int):
 
 
 # ================= FIFO v15 =================
-from datetime import date
-
-FIFO_START_DATE = date(2026, 1, 1)
 
 def ensure_sale_fifo(conn):
     conn.execute("""
